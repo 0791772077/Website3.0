@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   <!--<link href="./dashboard.css"> --> 
+</head>
+<style>
+    body{
+        background-image: url(img/blur-background.jpg);
+        background-size: 100%;
+        background-color: #333;
+        color: white;
+    }
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        background-color:transparent;
+        padding: 10px;
+    }
+    
+    /* Styling for the navigation links */
+    .navbar a {
+            border-radius: 20%;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+        }
+
+        /* Change the background color of the link when hovered */
+        .navbar a:hover {
+            background-color: #3bb900;
+        }
+a{
+    background:rgb(1, 13, 80) ;
+}
+div#wrapper{
+  background-color: #cccccc;
+  width: 510px;
+  height: 510px;
+  
+  text-decoration: none;
+}
+
+div.content{
+    height: 250px;
+    width: 250px;
+    border: 5px solid #333;
+    border-radius: 20%;
+    margin: 40px;
+    margin-top: 5% padding 50px;
+    float: left;
+    display: block;
+}
+
+div#first{
+    background-image: url('./img/trade.jpeg');
+    
+}
+
+div#second{
+    background-image: url('./img/loan.jpeg');
+  
+}
+div#third{
+    background-image: url('./img/token.webp');
+    
+}
+
+        /* Basic CSS for styling */
+        
+
+        h1 {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #ff0000;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color:#333;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #333;
+        }
+
+        .price-up {
+            color: green;
+            font-weight: bold;
+        }
+
+        .price-down {
+            color: red;
+            font-weight: bold;
+        }
+    
+
+</style>
+<body>
+    
+    <div class="navbar">
+        <a href="#">Trade</a>
+        <a href="TnC.html">Agreement</a>
+        <a href="trade.html">Transation</a>
+        <a href="#">Token</a>
+        <a href="#">Assets</a>
+        <a href="Education.html">How to learn</a>
+    </div>
+   
+    <h1>Live Stock Watchlist</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Company</th>
+                <th>Price</th>
+                <th>Change</th>
+            </tr>
+        </thead>
+        <tbody id="watchlist">
+            <!-- Placeholder rows for stock data -->
+            <!-- You can copy and paste the following row to create more rows -->
+            <tr>
+                <td>AAPL</td>
+                <td>Apple Inc.</td>
+                <td id="AAPL-price">$150.00</td>
+                <td id="AAPL-change" class="price-up">+5.00</td>
+            </tr>
+            <tr>
+                <td>GOOGL</td>
+                <td>Alphabet Inc.</td>
+                <td id="GOOGL-price">$2500.00</td>
+                <td id="GOOGL-change" class="price-down">-10.00</td>
+            </tr>
+            <!-- Add more rows for additional stock symbols -->
+            <tr>
+                <td>MSFT</td>
+                <td>Microsoft Corporation</td>
+                <td id="MSFT-price">$300.00</td>
+                <td id="MSFT-change" class="price-up">+7.50</td>
+            </tr>
+            <tr>
+                <td>AMZN</td>
+                <td>Amazon.com, Inc.</td>
+                <td id="AMZN-price">$3400.00</td>
+                <td id="AMZN-change" class="price-up">+12.00</td>
+            </tr>
+            <!-- Add more rows as needed -->
+            <!-- You can copy and paste the above rows to create a total of 20 rows -->
+        </tbody>
+    </table>
+        <p>GIVING YOU THE HEAD START YOU NEED</p>
+    <script>
+        // Simulated data updates (replace with real data source)
+        setInterval(() => {
+            updateStockData('AAPL', getRandomPrice(), getRandomChange());
+            updateStockData('GOOGL', getRandomPrice(), getRandomChange());
+            updateStockData('MSFT', getRandomPrice(), getRandomChange());
+            updateStockData('AMZN', getRandomPrice(), getRandomChange());
+            // Add more symbols and data updates as needed
+        }, 5000); // Update every 5 seconds
+
+        function updateStockData(symbol, price, change) {
+            const priceElement = document.getElementById(`${symbol}-price`);
+            const changeElement = document.getElementById(`${symbol}-change`);
+
+            priceElement.textContent = `$${price.toFixed(2)}`;
+
+            if (change > 0) {
+                changeElement.textContent = `+${change.toFixed(2)}`;
+                changeElement.classList.add('price-up');
+                changeElement.classList.remove('price-down');
+            } else if (change < 0) {
+                changeElement.textContent = `${change.toFixed(2)}`;
+                changeElement.classList.remove('price-up');
+                changeElement.classList.add('price-down');
+            } else {
+                changeElement.textContent = `${change.toFixed(2)}`;
+                changeElement.classList.remove('price-up', 'price-down');
+            }
+        }
+
+        function getRandomPrice() {
+            return Math.random() * (200 - 100) + 100; // Simulated price between 100 and 200
+        }
+
+        function getRandomChange() {
+            return Math.random() * (10 - (-10)) - 10; // Simulated change between -10 and 10
+        }
+    </script>
+
+</body>
+</html>
